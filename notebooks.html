@@ -386,15 +386,18 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-tendencia">5 Análisis de tendencia</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupados-por-dias">Agrupados por dias</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidad-de-la-serie">6. Estabilidad de la serie</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupando-por-ventas-diarias">Agrupando por ventas diarias</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-la-media-y-varianza-en-submuestras-evaluar-si-cambian-con-el-tiempo">Visualización de la media y varianza en submuestras: Evaluar si cambian con el tiempo.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-de-datos">6.2. Transformaciones de datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-multivariado">7. Análisis multivariado</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identificacion-de-ciclos-y-frecuencias">8. Identificación de ciclos y frecuencias</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteccion-de-anomalias-y-eventos-extremos">9. Detección de anomalías y eventos extremos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-y-recomendaciones">10. Resumen y recomendaciones</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-multivariado">7. Análisis multivariado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identificacion-de-ciclos-y-frecuencias">8. Identificación de ciclos y frecuencias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteccion-de-anomalias-y-eventos-extremos">9. Detección de anomalías y eventos extremos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-y-recomendaciones">10. Resumen y recomendaciones</a></li>
 </ul>
             </nav>
         </div>
@@ -1625,6 +1628,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <p>En este gráfico, la línea azul muestra las ventas diarias, mientras que la línea roja representa la tendencia lineal ajustada. A pesar de las fluctuaciones diarias, la tendencia general es ascendente, indicando un crecimiento en las ventas a lo largo del tiempo.</p>
+</section>
+</section>
+<section id="estabilidad-de-la-serie">
+<h2>6. Estabilidad de la serie<a class="headerlink" href="#estabilidad-de-la-serie" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -1700,7 +1707,6 @@ look-up table. The actual p-value is smaller than the p-value returned.
 </div>
 </div>
 <p>En la prueba de KPSS se obtuvo un p-valor &lt;0.05, por tanto se rechaza Ho, sin embargo, a diferencia de la prueba ADF, donde la hipótesis nula (H₀) es que la serie NO es estacionaria, en KPSS la H₀ indica que la serie es estacionaria, por ende, segun los resultados de la prueba KPSS la serie NO es estacionaria, esto contradice los resultados de la prueba de Dickey-Fuller</p>
-</section>
 <section id="agrupando-por-ventas-diarias">
 <h3>Agrupando por ventas diarias<a class="headerlink" href="#agrupando-por-ventas-diarias" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -1900,12 +1906,13 @@ look-up table. The actual p-value is greater than the p-value returned.
 </div>
 <p>Ambas pruebas de estacionariedad, ADF y KPSS, confirman que la serie diferenciada es estacionaria. La prueba ADF muestra un estadístico de -9.235 con un p-valor extremadamente bajo (1.639e-15), lo que indica que rechazamos la hipótesis nula de no estacionariedad. Por su parte, la prueba KPSS arroja un estadístico de 0.315 y un p-valor de 0.1, superior al umbral de 0.05, lo que sugiere que no rechazamos la hipótesis nula de estacionariedad.</p>
 </section>
+</section>
 <section id="analisis-multivariado">
-<h3>7. Análisis multivariado<a class="headerlink" href="#analisis-multivariado" title="Link to this heading">#</a></h3>
+<h2>7. Análisis multivariado<a class="headerlink" href="#analisis-multivariado" title="Link to this heading">#</a></h2>
 <p>El análisis multivariado no es necesario en nuestro caso, ya que nos estamos enfocando únicamente en la serie de ventas diarias y no contamos con variables adicionales que puedan influir en su comportamiento, como precios, promociones u otros factores externos.</p>
 </section>
 <section id="identificacion-de-ciclos-y-frecuencias">
-<h3>8. Identificación de ciclos y frecuencias<a class="headerlink" href="#identificacion-de-ciclos-y-frecuencias" title="Link to this heading">#</a></h3>
+<h2>8. Identificación de ciclos y frecuencias<a class="headerlink" href="#identificacion-de-ciclos-y-frecuencias" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aplicar la Transformada de Fourier a la serie de ventas diarias diferenciadas</span>
@@ -1956,7 +1963,7 @@ look-up table. The actual p-value is greater than the p-value returned.
 <p>La gráfica del espectro de potencia muestra la densidad de potencia distribuida a lo largo de diferentes frecuencias en las ventas diarias diferenciadas. Se destacan picos importantes en frecuencias cercanas a 0.28, 0.14 y 0.4 ciclos por día, lo que sugiere la presencia de ciclos recurrentes cada 3-4 días, semanalmente y aproximadamente cada 2 días, respectivamente.</p>
 </section>
 <section id="deteccion-de-anomalias-y-eventos-extremos">
-<h3>9. Detección de anomalías y eventos extremos<a class="headerlink" href="#deteccion-de-anomalias-y-eventos-extremos" title="Link to this heading">#</a></h3>
+<h2>9. Detección de anomalías y eventos extremos<a class="headerlink" href="#deteccion-de-anomalias-y-eventos-extremos" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definir un umbral para identificar picos inusuales (por ejemplo, 3 desviaciones estándar)</span>
@@ -2054,10 +2061,9 @@ InvoiceDate
 <p>Las anomalías detectadas en la serie de ventas parecen coincidir con periodos típicos de alta actividad comercial, como temporadas festivas o eventos especiales que suelen influir en el comportamiento del consumidor. Estos picos y caídas en las ventas pueden deberse a promociones, descuentos o cambios estacionales que afectan la demanda de productos. Por lo tanto, no necesariamente representan errores en los datos, sino variaciones esperadas en función del contexto económico o social.</p>
 </section>
 <section id="resumen-y-recomendaciones">
-<h3>10. Resumen y recomendaciones<a class="headerlink" href="#resumen-y-recomendaciones" title="Link to this heading">#</a></h3>
+<h2>10. Resumen y recomendaciones<a class="headerlink" href="#resumen-y-recomendaciones" title="Link to this heading">#</a></h2>
 <p>En el análisis realizado, identificamos varios patrones clave en la serie temporal de ventas. Se detectó una clara tendencia no estacionaria, la cual fue confirmada mediante pruebas estadísticas como la ADF y la KPSS. Esta tendencia se estabilizó mediante la diferenciación, resultando en una serie estacionaria adecuada para modelización. Además, se observó estacionalidad en la frecuencia semanal y mensual, reflejada en los análisis de la Transformada de Fourier y el espectro de potencia. También se identificaron anomalías significativas, algunas de las cuales se asociaron a picos de ventas en fechas específicas, probablemente vinculadas a eventos comerciales o estacionales.</p>
 <p>Como próximos pasos, proponemos aplicar diferentes modelos de serie de tiempo como ARIMA o SARIMA, que son adecuados para series estacionarias. Para manejar los valores atípicos, debemos evaluar su impacto en el modelo: si afectan negativamente, podrían ser suavizados mediante técnicas como medianas móviles o incluso eliminados si representan errores de registro. En cuanto a la no estacionariedad detectada inicialmente, la diferenciación ha sido efectiva, pero se pueden explorar transformaciones adicionales, como la logarítmica, para estabilizar aún más la varianza si es necesario. Por último, es recomendable contextualizar continuamente los picos de ventas con eventos externos para mejorar la precisión de las predicciones y ajustar estrategias comerciales.</p>
-</section>
 </section>
 </section>
 
@@ -2148,15 +2154,18 @@ InvoiceDate
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-tendencia">5 Análisis de tendencia</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupados-por-dias">Agrupados por dias</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidad-de-la-serie">6. Estabilidad de la serie</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupando-por-ventas-diarias">Agrupando por ventas diarias</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-la-media-y-varianza-en-submuestras-evaluar-si-cambian-con-el-tiempo">Visualización de la media y varianza en submuestras: Evaluar si cambian con el tiempo.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformaciones-de-datos">6.2. Transformaciones de datos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-multivariado">7. Análisis multivariado</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identificacion-de-ciclos-y-frecuencias">8. Identificación de ciclos y frecuencias</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteccion-de-anomalias-y-eventos-extremos">9. Detección de anomalías y eventos extremos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-y-recomendaciones">10. Resumen y recomendaciones</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-multivariado">7. Análisis multivariado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identificacion-de-ciclos-y-frecuencias">8. Identificación de ciclos y frecuencias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteccion-de-anomalias-y-eventos-extremos">9. Detección de anomalías y eventos extremos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen-y-recomendaciones">10. Resumen y recomendaciones</a></li>
 </ul>
   </nav></div>
 
