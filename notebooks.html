@@ -1978,11 +1978,6 @@ Para lograr que la serie sea estacionaria, se debe aplicar una transformacion</p
 </div>
 </div>
 <p>La gráfica muestra correctamente la serie original, la suavización en el conjunto de entrenamiento y las predicciones en el conjunto de prueba. Sin embargo, noto que la predicción en test (línea verde) parece ajustarse a los valores originales (línea roja), lo que sugiere que la suavización no está produciendo una extrapolación significativa.</p>
-<p>Si deseas mejorar la predicción para el conjunto de prueba, considera los siguientes ajustes:</p>
-<ol class="arabic simple">
-<li><p>Ajustar el valor de lambda (λ)
-Si el valor de λ es muy alto, las predicciones seguirán de cerca los valores observados. Prueba valores más bajos (0.1 - 0.3):</p></li>
-</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span>
@@ -2298,10 +2293,6 @@ RMSE = 5288.11 → Similar a lo que indica el MAE, el modelo tiene errores grand
 MSE = 27964101.40 → Error cuadrático medio elevado, lo que sugiere grandes diferencias entre valores predichos y observados.
 MAPE = NaN → Esto ocurre porque algunos valores de test[‘Quantity’] podrían ser cero, lo que causa divisiones por cero en la fórmula del MAPE.
 p-valor de Ljung-Box = NaN → Puede indicar que los residuos tienen valores constantes o que no se pudo calcular correctamente la estadística.</p>
-<p>El modelo de Holt-Winters con solo α (smoothing_level) no es suficiente</p>
-<p>El hecho de que la predicción sea una línea recta sugiere que el modelo no capta tendencias.</p>
-<p>La falta de autocorrelación en Ljung-Box (p-valor NaN)</p>
-<p>Esto puede deberse a que los residuos son demasiado uniformes, lo cual es consistente con la predicción constante.</p>
 <p>Suavización exponencial de Holt-winters con dos parámetros</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2859,6 +2850,7 @@ c:\Users\ronal\miniconda3\envs\series_de_tiempo\lib\site-packages\numpy\core\_me
 </div>
 </div>
 </div>
+<p>La gráfica muestra la predicción de un modelo ARIMA sobre la cantidad de productos vendidos a lo largo del tiempo. Se observa la serie original en azul para el conjunto de entrenamiento, con una línea naranja que representa los valores ajustados por el modelo en ese periodo. En la parte de prueba, el color rojo indica los valores reales mientras que la línea verde representa las predicciones. Se aprecia que la predicción del modelo ARIMA es bastante plana en el conjunto de prueba, lo que sugiere que no logra capturar la variabilidad ni la tendencia de los datos futuros. Esto puede deberse a que el modelo no está incorporando adecuadamente la dinámica estacional o a que la serie tiene una estructura más compleja que un modelo ARIMA simple no puede modelar eficientemente.</p>
 <p>garch</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3136,6 +3128,7 @@ c:\Users\ronal\miniconda3\envs\series_de_tiempo\lib\site-packages\statsmodels\ts
 </div>
 </div>
 </div>
+<p>La gráfica muestra la predicción del modelo ARIMA-GARCH en la cantidad de productos vendidos a lo largo del tiempo. La serie de entrenamiento en azul refleja la variabilidad de los datos históricos, mientras que la serie de prueba en rojo presenta una alta volatilidad. La predicción del modelo, en verde, se mantiene prácticamente constante y no captura la variabilidad observada en el conjunto de prueba. Esto sugiere que el modelo ARIMA-GARCH no está modelando adecuadamente la dinámica de la serie, posiblemente debido a una mala especificación en la estructura del GARCH o a que la volatilidad condicional no sigue un patrón predecible. Además, la presencia de valores nan en el MAPE y en la prueba de Ljung-Box indica que hubo problemas en los cálculos, posiblemente por valores cero en los datos de prueba.</p>
 <p>MLP (Perceptrón Multicapa, una red neuronal artificial)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4199,6 +4192,7 @@ Epoch 50/50
 </div>
 </div>
 </div>
+<p>La gráfica muestra la predicción del modelo Transferred Bi-directional LSTM (TL-BLSTM) aplicada a la serie de ventas diarias. La serie de entrenamiento en azul refleja la variabilidad histórica, mientras que la serie de prueba en rojo muestra un aumento en la volatilidad. La predicción en verde sigue mejor la tendencia general del conjunto de prueba en comparación con modelos anteriores, aunque aún presenta cierto error en la captura de los picos más extremos. Las métricas indican un MAE de 2927, lo que sugiere un error relativamente bajo en la escala de los datos. El MAPE del 29.91% indica que la predicción tiene una desviación moderada en relación con los valores reales. Sin embargo, el p-valor de la prueba de Ljung-Box es 0.0000, lo que sugiere que los residuos presentan autocorrelación significativa, lo que indica que el modelo aún no ha capturado completamente la estructura de la serie temporal.</p>
 </section>
 <section id="resumen-y-recomendaciones">
 <h2>10. Resumen y recomendaciones<a class="headerlink" href="#resumen-y-recomendaciones" title="Link to this heading">#</a></h2>
